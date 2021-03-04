@@ -18,7 +18,7 @@ export default defineComponent({
 </script>
 
 <!--|== CSS ==================================================================================== -->
-<style lang="sass">
+<style lang="scss">
 * {
   text-align: center;
 }
