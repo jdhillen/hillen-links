@@ -1,13 +1,15 @@
+<!--|== Template =============================================================================== -->
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/img/logo.png" />
+    <img alt="Vue logo" src="@/assets/img/logo.png" />
     <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
   </div>
 </template>
 
+<!--|== Scripts ================================================================================ -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "../components/HelloWorld.vue"; // @ is an alias to /src
+import HelloWorld from "@/components/HelloWorld.vue";
 
 export default defineComponent({
   name: "Home",
@@ -16,3 +18,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<!--|== CSS ==================================================================================== -->
+<style lang="scss">
+.home {
+}
+</style>
