@@ -29,7 +29,9 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, onMounted } from "vue";
+import { demoFunction } from "@/assets/js/filters/";
+
 export default defineComponent({
   name: "HelloWorld",
   props: {
@@ -38,7 +40,11 @@ export default defineComponent({
       required: true
     }
   },
+
   setup: () => {
+    onMounted(() => {
+      demoFunction();
+    });
     const count = ref(0);
     return { count };
   }
