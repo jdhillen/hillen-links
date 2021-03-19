@@ -21,7 +21,9 @@
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
 
-  <button @click="count++">count is: {{ count }}</button>
+  <button @click="inc()">count is: {{ state.counter }}</button>
+  <h3>Double Counter:</h3>
+  {{ doubleCounter }}
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
@@ -29,8 +31,10 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted } from "vue";
-import { demoFunction } from "@/assets/js/filters/";
+import { ref, defineComponent, onMounted, computed } from "vue";
+import { useStore, MutationTypes, ActionTypes } from "../store";
+import Services from "../services";
+import { demoFunction } from "../filters";
 
 export default defineComponent({
   name: "HelloWorld",
@@ -44,9 +48,35 @@ export default defineComponent({
   setup: () => {
     onMounted(() => {
       demoFunction();
+      Services.getContact().then((res) => {
+        console.log(res.data);
+      });
     });
-    const count = ref(0);
-    return { count };
+    // Use the Store
+    const store = useStore();
+
+    // Set Var for State
+    const state = ref(store.state);
+
+    // Increment Via Mutation
+    const inc = () => {
+      store.commit(MutationTypes.INC_COUNTER, 1);
+    };
+
+    // Increment Via Action
+    const actionInc = () => {
+      store.dispatch(ActionTypes.INC_COUNTER, 2);
+    };
+
+    // Getter
+    const doubleCounter = computed(() => store.getters.doubleCounter);
+
+    return {
+      state,
+      inc,
+      doubleCounter,
+      actionInc
+    };
   }
 });
 </script>
