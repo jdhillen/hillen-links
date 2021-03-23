@@ -31,13 +31,13 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted, computed } from "vue";
-import { useStore, MutationTypes, ActionTypes } from "../store";
-import Services from "../services";
-import { demoFunction } from "../filters";
+import { ref, defineComponent, onMounted, computed } from 'vue';
+import { useStore, MutationTypes, ActionTypes } from '../store';
+import Services from '../services';
+import { demoFunction } from '../filters';
 
 export default defineComponent({
-  name: "HelloWorld",
+  name: 'HelloWorld',
   props: {
     msg: {
       type: String,

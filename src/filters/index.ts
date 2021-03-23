@@ -2,7 +2,7 @@
 
 // ==|== Demo Function =============================================================================
 const demoFunction = () => {
-  console.log("Utility Functions Go Here");
+  console.log('Utility Functions Go Here');
 };
 
 // ==|== Export ====================================================================================

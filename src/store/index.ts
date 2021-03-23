@@ -9,7 +9,7 @@ import {
   CommitOptions,
   DispatchOptions,
   createLogger
-} from "vuex";
+} from 'vuex';
 
 //declare state
 export type State = { counter: number };
@@ -19,11 +19,11 @@ const state: State = { counter: 0 };
 
 // ==|== Mutations =================================================================================
 export enum MutationTypes {
-  INC_COUNTER = "SET_COUNTER"
+  INC_COUNTER = 'SET_COUNTER'
 }
 
 export enum ActionTypes {
-  INC_COUNTER = "SET_COUNTER"
+  INC_COUNTER = 'SET_COUNTER'
 }
 
 //Mutation Types
@@ -44,7 +44,7 @@ type AugmentedActionContext = {
     key: K,
     payload: Parameters<Mutations[K]>[1]
   ): ReturnType<Mutations[K]>;
-} & Omit<ActionContext<State, State>, "commit">;
+} & Omit<ActionContext<State, State>, 'commit'>;
 
 // actions interface
 export interface Actions {
@@ -66,13 +66,13 @@ export type Getters = {
 
 export const getters: GetterTree<State, State> & Getters = {
   doubleCounter: (state) => {
-    console.log("state", state.counter);
+    console.log('state', state.counter);
     return state.counter * 2;
   }
 };
 
 // ==|== Store Type ================================================================================
-export type Store = Omit<VuexStore<State>, "commit" | "getters" | "dispatch"> & {
+export type Store = Omit<VuexStore<State>, 'commit' | 'getters' | 'dispatch'> & {
   commit<K extends keyof Mutations, P extends Parameters<Mutations[K]>[1]>(
     key: K,
     payload: P,
